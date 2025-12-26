@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>18歲生日快樂 🎂</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #fceabb, #f8b500);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    color: #fff;
+  }
+  #container {
+    background: rgba(0,0,0,0.5);
+    padding: 40px;
+    border-radius: 20px;
+  }
+  h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+  #countdown {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+  }
+  button {
+    padding: 12px 25px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background: #ff4081;
+    color: #fff;
+    transition: 0.3s;
+  }
+  button:hover {
+    background: #e91e63;
+  }
+</style>
+</head>
+<body>
+<div id="container">
+  <h1>給我最重要的人 💖</h1>
+  <div id="countdown"></div>
+  <button onclick="showMsg()">點我看看生日驚喜 🎉</button>
+  <p id="message" style="margin-top:20px;font-size:1.3em;"></p>
+</div>
+
+<script>
+// 倒數計時
+const birthday = new Date("2025-12-28T00:00:00");
+function updateCountdown() {
+  const now = new Date();
+  const diff = birthday - now;
+  if(diff > 0) {
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff / (1000*60*60)) % 24);
+    const minutes = Math.floor((diff / (1000*60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+    document.getElementById("countdown").innerHTML =
+      `距離妳18歲生日還有 ${days} 天 ${hours} 小時 ${minutes} 分 ${seconds} 秒`;
+  } else {
+    document.getElementById("countdown").innerHTML = "🎂 生日快樂！";
+  }
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+// 點擊顯示甜蜜訊息
+function showMsg() {
+  document.getElementById("message").innerHTML = 
+    "認識妳之後，我在很多方面都成長了。<br><br>" +
+    "雖然我還有很多不足，但真的很慶幸能在妳18歲的這一年陪在妳身邊。<br><br>" +
+    "生日快樂，我很愛妳 🎂";
+}
+</script>
+</body>
+</html>
